@@ -12,3 +12,18 @@ Rätt: <script src="js/main.js"></script>
 
 */
 
+const inputNumber = document.getElementById("input-number").addEventListener('click', function());
+
+function 
+
+/*
+för att varannan post ska få olika färger
+
+const odd = document.querySelectorAll('    :nth-child(odd)');
+const even = document.querySelectorAll('   :nth-child(even)');
+
+for(var i = 0; i < odd.length; i++){
+    odd[i].style.backgroundColor = '    ';
+    even[i]style.backgroundColor = '    ';
+}
+*/
