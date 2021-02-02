@@ -10,11 +10,24 @@ Felsökningar: Redan från start stötte jag på den här buggen. Jag använder 
 Fel: <script> src="js/main.js"</script> 
 Rätt: <script src="js/main.js"></script> 
 
+2. 
+För att kolla så att definering av variabler, samt events och funktioner fungerar har jag använt console.log() och kollat i webbläsarens console på den förväntade outputen. På så sätt har jag lyckats identifera buggar och gjort förändringar i koden.  
+
 */
 
-const inputNumber = document.getElementById("input-number").addEventListener('click', function());
+"use strict";
 
-function 
+// definera variabler, lägga till event (musklick)
+let button = document.getElementById("button").addEventListener("click", addPost);
+let post = document.getElementById("main");
+
+
+// skapa funktion baserat på eventet ovan
+function addPost(e){
+    e.preventDefault();
+
+    console.log(1);
+}
 
 /*
 för att varannan post ska få olika färger
