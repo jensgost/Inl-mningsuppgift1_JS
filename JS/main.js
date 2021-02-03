@@ -30,30 +30,61 @@ let main = document.getElementById("main");
 
 // skapa funktion baserat på eventet ovan
 function addItem(){
+  
+  // skapar ny section variabel
   let newPost = document.createElement("section");
   
+  // skapar ny h1 variabel
   let header = document.createElement("h1");
 
-  header.innerText = "testing";
+  // döper texten i h1 till "New Post Title"
+  header.innerText = "New Post Title";
 
+  // Skapar delete-button variabel
   let deleteBtn = document.createElement("button");
 
+  // ger delete-button dess .css-attribut genom att länka klassen med den nyskapade variabeln 
   deleteBtn.className = "deleteBtn";
 
+  // ger deleteBtn dess text, ett X med appendChild-metoden
   deleteBtn.appendChild(document.createTextNode("X"));
 
+  // Länkar ihop variabeln header tsm med variabeln deleteBtn
   header.appendChild(deleteBtn);
 
+  // skapar ny p variabel
   let paragraph = document.createElement("p");
 
+  // skapar ytterligare en ny p variabel
   let paragraph2 = document.createElement("p");
 
-  paragraph.innerText = "testing2";
-  paragraph2.innerText = "testing3";
+  // döper texten i de två paragraph-variablerna
+  paragraph.innerText = "New first paragraph";
+  paragraph2.innerText = "New second paragraph";
 
-  newPost.appendChild(header, deleteBtn, paragraph, paragraph2);
+  // kallar på funktionen makeEditable
+  makeEditable(header);
+  makeEditable(paragraph);
+  makeEditable(paragraph2);
+
+  // länkar de olika variablerna med varandra genom metoden appendChild.
+  // paragraph, paragraph2 --> header --> newPost --> main
+  header.appendChild(paragraph);
+  header.appendChild(paragraph2);
+  newPost.appendChild(header);
   main.appendChild(newPost); 
 
+  }
+
+  // skapar funktion som gör det möjligt att editera innehållet
+  function makeEditable(elem){
+    elem.onclick = function(e) {
+      elem.contentEditable = true;
+      elem.focus();
+    };
+    elem.onblur = function(e) {
+      elem.contentEditable = false;
+    };
   }
 
 /*

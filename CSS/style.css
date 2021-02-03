@@ -24,6 +24,11 @@ body{
     float:right;
 }
 
+#main p{
+    font-size: 15px !important;
+    font-weight: lighter !important;
+}
+
 .container{
     width: 80%;
     margin:auto;
@@ -37,9 +42,8 @@ body{
     padding: 15px 0;
 }
 
-#main-header input{
+#main-header button{
     font-weight: bold;
-    width: 50px;
 }
 
 #hero{
