@@ -1,6 +1,6 @@
 /*
 
-Buggar och felsökningar
+Buggar och metoder för att felsöka samt rätta till dessa buggar
 
 1.
 Bugg: js-koden som skrevs i main.js syntes inte i consolen i webbläsarens developer tools. 
@@ -11,23 +11,50 @@ Fel: <script> src="js/main.js"</script>
 Rätt: <script src="js/main.js"></script> 
 
 2. 
+Jag använder "use strict"; för att köra koden i skarpt läge, så att t ex odefinerade variabler promptar error. 
+
+3.
+Jag använder JavaScript Coding Convention enligt w3school:s instruktioner, t ex camelCase vid namngivelse, två spaces istället för tab, etc.
+
+4. 
 För att kolla så att definering av variabler, samt events och funktioner fungerar har jag använt console.log() och kollat i webbläsarens console på den förväntade outputen. På så sätt har jag lyckats identifera buggar och gjort förändringar i koden.  
 
 */
 
+// för att köra koden i skarpt läge
 "use strict";
 
 // definera variabler, lägga till event (musklick)
-let button = document.getElementById("button").addEventListener("click", addPost);
-let post = document.getElementById("main");
-
+let button = document.getElementById("button").addEventListener("click", addItem);
+let main = document.getElementById("main");
 
 // skapa funktion baserat på eventet ovan
-function addPost(e){
-    e.preventDefault();
+function addItem(){
+  let newPost = document.createElement("section");
+  
+  let header = document.createElement("h1");
 
-    console.log(1);
-}
+  header.innerText = "testing";
+
+  let deleteBtn = document.createElement("button");
+
+  deleteBtn.className = "deleteBtn";
+
+  deleteBtn.appendChild(document.createTextNode("X"));
+
+  header.appendChild(deleteBtn);
+
+  let paragraph = document.createElement("p");
+
+  let paragraph2 = document.createElement("p");
+
+  paragraph.innerText = "testing2";
+  paragraph2.innerText = "testing3";
+
+  newPost.appendChild(header, deleteBtn, paragraph, paragraph2);
+  main.appendChild(newPost); 
+
+  }
 
 /*
 för att varannan post ska få olika färger
