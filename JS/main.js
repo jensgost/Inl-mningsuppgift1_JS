@@ -30,7 +30,7 @@ let main = document.getElementById("main");
 let post = document.getElementById("post");
 
 // delete event
-//main.addEventListener("click", removeItem);
+main.addEventListener("click", removeItem);
 post.addEventListener("click", removeItem);
 
 // skapa funktion baserat på eventet ovan
@@ -91,8 +91,8 @@ function addItem(){
   // skapar funktion som tar bort ett blogginlägg
   function removeItem(e){
     if(e.target.classList.contains("deleteBtn")){
-      let header = e.target.parentElement;
-      post.childNodes.remove(header);
+      let newPost = e.target.parentElement;
+      main.removeChild(newPost);
     }
   }
 
