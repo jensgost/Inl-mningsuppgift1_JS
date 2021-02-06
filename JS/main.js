@@ -27,18 +27,25 @@ För att kolla så att definering av variabler, samt events och funktioner funge
 // definera variabler, lägga till event (musklick)
 let button = document.getElementById("button").addEventListener("click", addItem);
 let main = document.getElementById("main");
+let post = document.getElementById("post");
+
+// delete event
+//main.addEventListener("click", removeItem);
+post.addEventListener("click", removeItem);
 
 // skapa funktion baserat på eventet ovan
 function addItem(){
   
   // skapar ny section variabel
   let newPost = document.createElement("section");
+
+  newPost.id = "post";
   
   // skapar ny h1 variabel
   let header = document.createElement("h1");
 
   // döper texten i h1 till "New Post Title"
-  header.innerText = "New Post Title";
+  header.innerText = "New Post";
 
   // Skapar delete-button variabel
   let deleteBtn = document.createElement("button");
@@ -55,22 +62,16 @@ function addItem(){
   // skapar ny p variabel
   let paragraph = document.createElement("p");
 
-  // skapar ytterligare en ny p variabel
-  let paragraph2 = document.createElement("p");
-
   // döper texten i de två paragraph-variablerna
-  paragraph.innerText = "New first paragraph";
-  paragraph2.innerText = "New second paragraph";
+  paragraph.innerText = "New paragraph. Fill this paragraph with text to your own liking. Write about your own interests, such as sports, TV shows, clothing brands, music, games etc. Or share your everyday life with all your fans out there. The choice is yours. Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla ...";
 
   // kallar på funktionen makeEditable
   makeEditable(header);
   makeEditable(paragraph);
-  makeEditable(paragraph2);
 
   // länkar de olika variablerna med varandra genom metoden appendChild.
   // paragraph, paragraph2 --> header --> newPost --> main
   header.appendChild(paragraph);
-  header.appendChild(paragraph2);
   newPost.appendChild(header);
   main.appendChild(newPost); 
 
@@ -87,14 +88,23 @@ function addItem(){
     };
   }
 
-/*
-för att varannan post ska få olika färger
+  // skapar funktion som tar bort ett blogginlägg
+  function removeItem(e){
+    if(e.target.classList.contains("deleteBtn")){
+      let header = e.target.parentElement;
+      post.childNodes.remove(header);
+    }
+  }
 
-const odd = document.querySelectorAll('    :nth-child(odd)');
-const even = document.querySelectorAll('   :nth-child(even)');
 
-for(var i = 0; i < odd.length; i++){
-    odd[i].style.backgroundColor = '    ';
-    even[i]style.backgroundColor = '    ';
-}
-*/
+
+  // varje gång man hovrar över ett blogginlägg ska det blir mörkt, ej klart än.
+  let box = document.getElementById("hero").addEventListener("mouseenter", runEvent);
+  //let numBoxes = box.length;
+
+  function runEvent(){
+    document.getElementById("hero").style.backgroundColor = "#2f3136";
+  }
+   /* for (let i = 0; i < numBoxes; i++){
+    box[i].addEventListener("mouseenter", runEvent);
+  }*/
